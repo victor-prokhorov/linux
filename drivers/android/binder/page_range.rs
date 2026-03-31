@@ -672,7 +672,7 @@ unsafe extern "C" fn rust_shrink_free_page(
         // CAST: The `list_head` field is first in `PageInfo`.
         let info = item as *mut PageInfo;
         // SAFETY: The `range` field of `PageInfo` is immutable.
-        let range = unsafe { &*((*info).range) };
+        let range = unsafe { (*info).range.as_ref_unchecked() };
 
         mm = match range.mm.mmget_not_zero() {
             Some(mm) => MmWithUser::into_mmput_async(mm),

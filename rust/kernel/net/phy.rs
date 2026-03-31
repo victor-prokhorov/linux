@@ -88,7 +88,7 @@ impl Device {
         let ptr = ptr.cast::<Self>();
         // SAFETY: by the function requirements the pointer is valid and we have unique access for
         // the duration of `'a`.
-        unsafe { &mut *ptr }
+        unsafe { ptr.as_mut_unchecked() }
     }
 
     /// Gets the id of the PHY.
