@@ -316,7 +316,7 @@ $(obj)/%.lst: $(obj)/%.c FORCE
 #
 # Please see https://github.com/Rust-for-Linux/linux/issues/2 for details on
 # the unstable features in use.
-rust_allowed_features := arbitrary_self_types,asm_goto,used_with_arg
+rust_allowed_features := arbitrary_self_types,asm_goto,used_with_arg,ptr_as_ref_unchecked
 
 # `--out-dir` is required to avoid temporaries being created by `rustc` in the
 # current working directory, which may be not accessible in the out-of-tree
